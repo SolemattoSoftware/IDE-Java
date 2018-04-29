@@ -1,7 +1,9 @@
 package com.JavaIDE.Files;
 
+import java.io.Closeable;
 
-public abstract class File {
+
+public abstract class File implements Closeable {
 	private String nome;
 	private int tipo;
 	private String percorsoFile;
@@ -41,5 +43,10 @@ public abstract class File {
 
 	public void setPercorsoFile(String percorsoFile) {
 		this.percorsoFile = percorsoFile;
+	}
+	
+	@Override
+	public void close() {
+		System.out.println("Chiuso!");
 	}
 }
