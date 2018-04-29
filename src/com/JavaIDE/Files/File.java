@@ -1,3 +1,5 @@
+package com.JavaIDE.Files;
+
 
 public abstract class File {
 	private String nome;

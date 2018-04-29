@@ -1,3 +1,5 @@
+package com.JavaIDE.Files;
+
 
 public interface TipoFile {
 	int JAVA = 1;
