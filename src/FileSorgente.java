@@ -13,7 +13,7 @@ public class FileSorgente extends File {
 		
 	}
 
-	private String getContenuto() {
+	public String getContenuto() {
 		return contenuto;
 	}
 
@@ -21,16 +21,40 @@ public class FileSorgente extends File {
 		this.contenuto = contenuto;
 	}
 	
-	public void aggiungiTesto(String testo) {
+	public void aggiungiTesto(String contenuto) {
 		
-		if(testo == null) {
-			this.setContenuto(testo);
+		if(contenuto == null) {
+			this.setContenuto(contenuto);
 		}
 		
-		assert this.getContenuto() != null: "Contenuto del file nullo";
+		assert this.getContenuto() != null: "Contenuto del file nullo!";
 		
-		this.setContenuto(this.getContenuto() + testo);
+		this.setContenuto(this.getContenuto() + contenuto);
 		
+	}
+	
+	
+	public void aggiungiTesto(String contenuto, int posizione) {
+		
+		try {
+			
+			if(contenuto != null) {
+				this.setContenuto(this.getContenuto().substring(0, posizione) +
+						contenuto +
+						this.getContenuto().substring(posizione) );
+			}
+			
+			assert this.getContenuto() != null: "Contenuto del file nullo!";
+			
+		}catch(IndexOutOfBoundsException exc) {
+			System.out.println("Errore: parametro posizone del metodo aggiungiTesto(String,int) non valido.");
+		}
+	}
+	
+	@Override
+	public String toString() {
+		//TODO: sostituire con Stringa che ricapitola nomefile.estensione + eventuale contenuto (se contenuto nullo stampare file vuoto)
+		return this.getContenuto();
 	}
 
 }
